@@ -1,0 +1,9 @@
+var v1=6;
+var t1=5;
+var t2=4;
+var s2=36;
+var v3=4;
+var t3=16;
+console.log(s1=6*5)
+console.log(v2=36/4)
+console.log(t3=16/4)
