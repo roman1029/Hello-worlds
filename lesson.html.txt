@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Расчет времени</title>
+</head>
+<body>
+	<script src="cost.js"></script>
+	<form>
+		<input type="text" name="speed"><br>
+		<input type="text" name="way"><br>
+		<input type="button" onclick="getdays()" value="Расчитать">
+	</form>
+	<div id="days"></div>
+</body>
+</html>
