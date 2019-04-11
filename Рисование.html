@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Прямоугольник</title>
+</head>
+<body>
+	<p>Прямоугольник</p>
+	
+    <form>
+		x1<input type="text" id ="x1"><br>
+		y1<input type="text" id ="y1"><br>
+		x2<input type="text" id ="x2"><br>
+		y2<input type="text" id ="y2"><br>
+		xp<input type="text" id ="xp"><br>
+		yp<input type="text" id ="yp"><br>
+		
+		<input type="button" value = "посчитать" onclick="calc()">
+    </form>
+	
+    <div id = "res"></div>
+	<canvas id="canvas" width="300" height="300"></canvas>
+	<script>
+		function calc()
+		{
+			var x1 = document.getElementById("x1").value;
+			var y1 = document.getElementById("y1").value;
+			
+			var x2 = document.getElementById("x2").value;
+			var y2 = document.getElementById("y2").value;
+			
+			var xp = document.getElementById("xp").value;
+			var yp = document.getElementById("yp").value;
+			
+			var res = document.getElementById("res");
+		
+			alert(xp)
+			alert(yp)
+			
+			if(y1<yp && yp<y2 && x1<xp && xp<x2)
+			{
+				res.innerHTML = "Внутри прямоугольника";
+			}
+			else if(yp==y2 && x1<=xp && xp<=x2 || xp==x2 && y1<=yp && yp<=y2 || yp==y1 && y1<=yp && yp<=y2 || xp==x1 && y1<=yp && yp<=y2)
+			{
+				res.innerHTML = "На границе";
+			}
+			else if(yp>y2&&xp<x1||yp>y2&&x1<xp&&xp<x2||yp>y2&&xp>x2||y1<yp&&yp<y2&&xp<x1||y1<yp&&yp<y2&&xp>x2||yp<y1&&xp<x1||yp<y1&&x1<xp&&xp<x2||yp==y1&&xp>x2)
+			{
+				res.innerHTML = "За пределами прямоугольника";
+			}
+			
+			var w = Math.abs(x2-x1);
+			var h = Math.abs(y2-y1);
+	
+			var canvas = document.getElementById('canvas');
+			if (canvas.getContext)
+			{
+				var ctx = canvas.getContext('2d');
+				
+				ctx.strokeRect(150+Number(x1),150 - Number(y1)-h, w, h);
+				ctx.fillRect(150+Number(xp),150-yp, 1, 1);
+			}
+		
+		}	
+	</script>
+	
+ </body>
+</html>
