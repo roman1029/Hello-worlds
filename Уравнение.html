@@ -4,71 +4,23 @@
 		<title>Сетка</title>
 	</head>
 	<body>
+	<script src="numbers.js"></script>
+	<canvas id="canvas" width="300" height="300"></canvas>
+	<script>
+	        var canvas = document.getElementById("canvas");
+	        var ctx = canvas.getContext("2d");
+    </script>
+	<script>
+		var k1 = document.getElementById('k1');
+		var k2 = document.getElementById('k2');
+		var b1 = document.getElementById('b1');
+		var b2 = document.getElementById('b2');
+	</script>
 		<form>
-			<input type="text" id="point"><br>
-			<input type="text" id="remove"><br>
+		    <input type="text" id="point"><br>
+	        <input type="text" id="remove"><br>
 			
-			<input type="button" onclick="drawPoliLine()" value="Нарисовать">
+		        <input type="button" onclick="drawPoliLine()" value="Нарисовать">
 		</form>
-		<canvas id="canvas" width="300" height="300"></canvas>
-		<script>
-			var canvas = document.getElementById("canvas");
-			var ctx = canvas.getContext("2d");
-			var d = 20;
-			
-			var point_input = document.getElementById("point");
-			var point_del = document.getElementById("remove");
-				
-			var mass_points=[];
-			function drawPoliLine()
-			{
-				ctx.clearRect(0, 0, 300, 300);
-				
-				ctx.beginPath(); 
-				ctx.strokeStyle="gray";
-				for(var i=0; i<=300; i+=d)
-				{
-				ctx.moveTo(0,i);
-				ctx.lineTo(300,i);
-				}
-				
-				for(var i=0; i<=300; i+=d)
-				{
-					ctx.moveTo(i,0);
-					ctx.lineTo(i,300);
-				}
-				ctx.stroke();
-				
-				var point = point_input.value;
-				var remove = point_del.value;
-				
-				if(remove!="")
-				{
-					remove = remove.split(",");
-					for(var i=0; i<mass_points.length; i+=1)
-					{
-						if(mass_points[i].x == remove[0] && mass_points[i].y == remove[1])
-						{
-							mass_points.splice(i, 1);
-						}
-					}
-				}
-				
-				if(point!="")
-				{
-					point = point.split(",");
-					mass_points.push({x:point[0], y:point[1]});
-				}
-				console.log(mass_points);
-				ctx.strokeStyle="red";
-				ctx.beginPath();
-				for(var i=1; i<mass_points.length; i+=1)
-				{
-					ctx.moveTo(mass_points[i-1].x*d,mass_points[i-1].y*d);
-					ctx.lineTo(mass_points[i].x*d,mass_points[i].y*d);
-				}
-				ctx.stroke();
-			}
-	    </script>
 	</body>
 </html>
